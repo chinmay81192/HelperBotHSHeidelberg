@@ -1,0 +1,108 @@
+﻿<Window x:Class="HelperBotApplication.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HelperBotApplication"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="700" Width="480">
+    <Grid Margin="0,0,-0.4,0.4">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="41*"/>
+            <RowDefinition Height="170*"/>
+            <RowDefinition Height="459*"/>
+        </Grid.RowDefinitions>
+        <StackPanel HorizontalAlignment="Left" Height="611" Margin="25,0.2,0,0" Grid.Row="1" VerticalAlignment="Top" Width="619" Grid.RowSpan="2">
+            <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="HELPER BOT" VerticalAlignment="Top" Margin="0,0,276.2,20" FontWeight="Bold" FontFamily="Arial Black" />
+            <Grid>
+                <ScrollViewer VerticalScrollBarVisibility="Auto" Height="100" IsEnabled="True">
+                    <Border CornerRadius="2" BorderThickness="0">
+                    <TextBlock x:Name="Answer" ScrollViewer.CanContentScroll="True" HorizontalAlignment="Left" Margin="10,9.2,0,0" TextWrapping="Wrap" Text="Welcome to the Applied Computer Science department at SRH Hochschule Heidelberg. My name is Ghost and I shall be your guide. If you are using this application for the first time, you have the option of walking through the whole department. Else, you can also search the information you need using the search bar towards the bottom of the application. Hope you get what you need and decide that you would join us in the 2 year long but nonetheless fun filled journey towards obtaining Master's degree. :)" VerticalAlignment="Top"  Width="400" Height="Auto" Grid.Row="1"/>
+                    </Border>
+                </ScrollViewer>
+            </Grid>
+            <Image HorizontalAlignment="Left" Height="50"  VerticalAlignment="Top" Width="50" Source="C:\Users\Chinmay\Pictures\ghost_PNG55.png" RenderTransformOrigin="0.637,-0.664" Margin="10,10,0,0"/>
+
+            <TextBlock HorizontalAlignment="Left"  Grid.Row="2" TextWrapping="Wrap" Text="Suggestions" VerticalAlignment="Top" Margin="0,50,0,5"/>
+            <ListBox HorizontalAlignment="Left" Height="144"  Grid.Row="2" VerticalAlignment="Top" Width="400" x:Name="Suggestions" SelectionChanged="Suggestions_SelectionChanged">
+                <ListBox.Resources>
+                    <DataTemplate DataType="{x:Type local:Module}">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock><Run Text="{Binding name}" FontWeight="Bold"/></TextBlock>
+                            <TextBlock><Run Text="; "/></TextBlock>
+                            <TextBlock><Run Text="{Binding prof}"/></TextBlock>
+                            <TextBlock><Run Text="; "/></TextBlock>
+                            <TextBlock><Run Text="{Binding moduleType}"/></TextBlock>
+                        </StackPanel>
+
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type local:CourseOverview}">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock><Run Text="{Binding courseName}" FontWeight="Bold"/></TextBlock>
+                            <TextBlock><Run Text="; "/></TextBlock>
+                            <TextBlock><Run Text="{Binding degreeOffered}"/></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type local:AdmissionRequirement}">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock><Run Text="{Binding name}" FontWeight="Bold"/></TextBlock>
+                            <TextBlock><Run Text="; "/></TextBlock>
+                            <TextBlock><Run Text="{Binding courseName}"/></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type local:Professor}">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock><Run Text="{Binding name}" FontWeight="Bold"/></TextBlock>
+                            <TextBlock><Run Text="; "/></TextBlock>
+                            <TextBlock><Run Text="{Binding designation}"/></TextBlock>
+                            <TextBlock><Run Text="; "/></TextBlock>
+                            <TextBlock><Run Text="{Binding module}"/></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type local:Prospect}">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock><Run Text="{Binding name}" FontWeight="Bold"/></TextBlock>
+                            <TextBlock><Run Text="; "/></TextBlock>
+                            <TextBlock><Run Text="{Binding companies}"/></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type local:AdmissionDocuments}">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock><Run Text="{Binding name}" FontWeight="Bold"/></TextBlock>
+                            <TextBlock><Run Text="; "/></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type local:StudentReviews}">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock><Run Text="{Binding name}" FontWeight="Bold"/></TextBlock>
+                            <TextBlock><Run Text="; "/></TextBlock>
+                            <TextBlock><Run Text="{Binding studentName}"/></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type local:Contact}">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock><Run Text="{Binding name}" FontWeight="Bold"/></TextBlock>
+                            <TextBlock><Run Text="; "/></TextBlock>
+                            <TextBlock><Run Text="{Binding contactName}"/></TextBlock>
+                            <TextBlock><Run Text="; "/></TextBlock>
+                            <TextBlock><Run Text="{Binding email}"/></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type local:Sugg}">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock><Run Text="{Binding sugestions}"/></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.Resources>
+            </ListBox>
+            <TextBlock HorizontalAlignment="Left"  Grid.Row="2" TextWrapping="Wrap" Text="Please Enter your query" VerticalAlignment="Top" Height="36" Width="278" Margin="0,50,0,0" />
+            <StackPanel  Orientation="Horizontal" Grid.Row="2">
+                <TextBox HorizontalAlignment="Left" Height="38" TextWrapping="Wrap" VerticalAlignment="Top" Width="380" x:Name="Query" TextChanged="Query_TextChanged" Margin="0,0,0,-1.2"/>
+                <Button Content="→" HorizontalAlignment="Left" VerticalAlignment="Top" Width="38" Height="38"/>
+            </StackPanel>
+        </StackPanel>
+
+
+
+    </Grid>
+</Window>
